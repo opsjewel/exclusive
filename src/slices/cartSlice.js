@@ -17,10 +17,21 @@ export const cartSlice = createSlice({
       state.cartItems.push({...action.payload, cartQun: 1})
     }
     localStorage.setItem("cartItems", JSON.stringify(state.cartItems))
+   },
+   cartQuntity:(state, action)=>{
+    console.log(state.cartItems)
+    console.log(action.payload)
+    if(action.payload.type === "increment"){
+      state.cartItems[action.payload.id].cartQun += 1
+    }else{
+      state.cartItems[action.payload.id].cartQun -= 1
+
+    }
+        localStorage.setItem("cartItems", JSON.stringify(state.cartItems))
    }
   }
 })
 
-export const { cartTotal } = cartSlice.actions
+export const { cartTotal, cartQuntity } = cartSlice.actions
 
 export default cartSlice.reducer

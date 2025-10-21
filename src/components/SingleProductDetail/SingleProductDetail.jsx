@@ -14,6 +14,7 @@ import returnback from '../../assets/returnback.png'
 import SingleProductRating from './SingleProductRating'
 import { useDispatch } from 'react-redux'
 import { cartTotal } from '../../slices/cartSlice'
+import { Bounce, ToastContainer, toast } from 'react-toastify';
 
 const SingleProductDetail = () => {
 
@@ -38,14 +39,28 @@ const SingleProductDetail = () => {
     }
   }, [singleProduct])
 
-  const handleAddToCart = (product) =>{
+  const handleAddToCart = (product) => {
     // console.log("ok cool")
     // console.log(product)
     dispatch(cartTotal(product))
+    toast.success("add to cart")
   }
 
   return (
     <div className='py-30 '>
+      <ToastContainer
+        position="top-center"
+        autoClose={5000}
+        hideProgressBar={false}
+        newestOnTop={false}
+        closeOnClick={false}
+        rtl={false}
+        pauseOnFocusLoss
+        draggable
+        pauseOnHover
+        theme="dark"
+        transition={Bounce}
+      />
       <Container>
         <div className='grid grid-cols-12 space-x-4  row'>
           <div className='col-span-2'>
@@ -126,7 +141,7 @@ const SingleProductDetail = () => {
                   <p className='font-primary font-medium text-[20px] py-2 px-[34px]'>2</p>
                   <div className='py-[15px] px-[12px] bg-[#DB4444] text-white'><FaPlus /></div>
                 </div>
-                <div onClick={()=>handleAddToCart(singleProduct)} className='ml-4 font-primary font-medium rounded text-white py-[14px] px-[35px] bg-[#DB4444]'>
+                <div onClick={() => handleAddToCart(singleProduct)} className='ml-4 font-primary font-medium rounded text-white py-[14px] px-[35px] bg-[#DB4444]'>
                   Add Cart
                 </div>
                 <div className='border border-black/50 ml-4 px-[12px] py-[13px] rounded '>
