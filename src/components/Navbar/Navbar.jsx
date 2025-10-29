@@ -19,9 +19,9 @@ const Navbar = () => {
         <ul className='flex items-center gap-x-[48px]'>
           <li className='font-primary'><Link to="/">Home</Link></li>
           <li className='font-primary'><Link to="/product">Product</Link></li>
-          <li className='font-primary'><Link to="">Contact</Link></li>
+          <li className='font-primary'><Link to="/contact">Contact</Link></li>
           <li className='font-primary'><Link to="/about">About</Link></li>
-          <li className='font-primary'><Link to="">Sign Up</Link></li>
+          <li className='font-primary'><Link to="/signup">Sign Up</Link></li>
         </ul>
       </div>
       <div className='w-[35%] '>
