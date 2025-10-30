@@ -13,7 +13,9 @@ const Navbar = () => {
      <Container>
     <div className='flex items-center'>
       <div className='w-[20%]'>
+        <Link to="/">
         <img src={logo} alt="" />
+        </Link>
       </div>
       <div className='w-[45%]'>
         <ul className='flex items-center gap-x-[48px]'>
@@ -35,7 +37,9 @@ const Navbar = () => {
          <Link to="/cart">
           <FaOpencart size={24}/>
          </Link>
+         <Link to="/login">
           <GoPerson size={24}/>
+         </Link>
         </div>
 </div>
       </div>

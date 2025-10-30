@@ -1,12 +1,26 @@
 import React, { useState } from 'react'
 import signupimg from '../../assets/signupimg.png'
 import googleimg from '../../assets/googleimg.png'
-import { Link } from 'react-router'
+import { Link, useNavigate } from 'react-router'
 import { Bounce, ToastContainer, toast } from 'react-toastify';
 import { FaEye } from "react-icons/fa";
 import { FaEyeSlash } from "react-icons/fa";
+import { getAuth, createUserWithEmailAndPassword, sendEmailVerification, signInWithPopup } from "firebase/auth";
+import { GoogleAuthProvider } from "firebase/auth";
+
+const provider = new GoogleAuthProvider();
 
 const Registration = () => {
+
+  const auth = getAuth();
+  const navigate = useNavigate()
+
+  const handleGoogleSignIn = () => {
+    signInWithPopup(auth, provider)
+    .then(()=>{
+      toast.success("LogIn with google done");
+    })
+  }
 
   const [show, setShow] = useState(false)
 
@@ -32,7 +46,6 @@ const Registration = () => {
   }
 
   const handleCreateAccount = () => {
-
     if(!name){
       setNameErr("please enter your name")
     }
@@ -62,7 +75,21 @@ const Registration = () => {
     }
 
     if(name && email && password){
-      toast.success("your registration successfully done")
+      // toast.success("your registration successfully done")
+      createUserWithEmailAndPassword(auth, email, password)
+  .then((user) => {
+        sendEmailVerification(auth.currentUser)
+        toast.success("create your account successfully done")
+        setTimeout(()=>{
+          navigate("/login")
+        },2000)
+        
+  })
+  .catch((error) => {
+    const errorCode = error.code;
+    const errorMessage = error.message;
+    // ..
+  });
     }
 
 
@@ -117,11 +144,11 @@ const Registration = () => {
         <div className='mt-4'>
           <button className='flex py-4 px-[86px] border border-black/40 bg-transparent rounded-[4px]'>
             <img src={googleimg} alt="" />
-            <p className='font-primary ml-4'>Sign up with Google</p>
+            <p onClick={handleGoogleSignIn} className='font-primary ml-4'>Sign up with Google</p>
           </button>
         </div>
         <div className='mt-[32px] text-center'>
-          <p>Already have account? <span className='ml-4'><Link to="/Login">Log in</Link></span></p>
+          <p>Already have account? <span className='ml-4'><Link to="/login">Log in</Link></span></p>
         </div>
       </div>
     </div>
