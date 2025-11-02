@@ -1,37 +1,21 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 
 const ProductLeftPart = () => {
   
-  const data = [
-    {
-      name: 'Woman’s Fashion'
-    },
-    {
-      name: 'Men’s Fashion'
-    },
-    {
-      name: 'Electronics'
-    },
-    {
-      name: 'Home & Lifestyle'
-    },
-    {
-      name: 'Medicine'
-    },
-    {
-      name: 'Sports & Outdoor'
-    },
-    {
-      name: 'Baby’s & Toys'
-    },
-    {
-      name: 'Groceries & Pets'
-    },
-    {
-      name: 'Health & Beauty'
-    },
 
-  ]
+    const [productData, setProductData] = useState([])
+
+    useEffect(() => {
+      fetch("https://dummyjson.com/products")
+        .then((res) => res.json())
+        .then((data) => setProductData(data.products))
+    }, [])
+
+    const categoriesProduct = productData.map((product)=>(
+      product.category
+    ))
+
+    const uniqueCategory = [...new Set(categoriesProduct)]
 
   return (
     <div className='w-[25%] mt-[32px]'>
@@ -40,8 +24,8 @@ const ProductLeftPart = () => {
       </div>
       <div>
               {
-        data.map((item)=>(
-          <div className='mb-4 font-primary'>{item.name}</div>
+        uniqueCategory.map((product)=>(
+          <div className='mb-4 font-primary'>{product}</div>
         ))
       }
       </div>
