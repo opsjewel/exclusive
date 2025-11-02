@@ -18,7 +18,7 @@ const Registration = () => {
   const handleGoogleSignIn = () => {
     signInWithPopup(auth, provider)
     .then(()=>{
-      toast.success("LogIn with google done");
+      toast.success("LogIn With google done");
     })
   }
 

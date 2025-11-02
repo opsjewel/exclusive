@@ -68,7 +68,9 @@ const LogIn = () => {
           const errorCode = error.code;
           const errorMessage = error.message;
         });
-        
+        setEmail("")
+        setPassword("")
+    }
 
 
   }
