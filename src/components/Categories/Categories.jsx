@@ -46,12 +46,12 @@ const Categories = () => {
     <div className='pt-[153px]'>
       <Container>
         <div>
-      <SectionHead>
-        Categories
-      </SectionHead>
-    <SectionSubHead>
-      Browse By Category
-    </SectionSubHead>
+          <SectionHead>
+            Categories
+          </SectionHead>
+          <SectionSubHead>
+            Browse By Category
+          </SectionSubHead>
           <div className=' mt-[60px]'>
 
             <Slider {...settings}>

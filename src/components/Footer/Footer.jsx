@@ -23,7 +23,7 @@ const Footer = () => {
             <h4 className='font-primary font-medium text-[20px] mt-6'>Subscribe</h4>
             <p className='font-primary mt-6'>Get 10% off your first order</p>
             <div className='relative flex w-[217px] mt-4'>
-              <input className='w-full rounded outline-0 py-3 pl-4 pr-11 border placeholder:font-primary placeholder:text-[#646464] ' placeholder='Enter your email' type="text" />
+              <input className='w-full rounded  outline-0 py-3 pl-4 pr-11 border placeholder:font-primary placeholder:text-[#646464] ' placeholder='Enter your email' type="text" />
               <LuSendHorizontal size={20} className='absolute top-[15px] right-[14px]' />
             </div>
           </div>
@@ -52,19 +52,19 @@ const Footer = () => {
           <div>
             <h3 className='font-primary font-medium text-[20px]'>Download App</h3>
             <h4 className='font-primary font-medium text-[12px] mt-6'>Save $3 with App New User Only</h4>
-           <div className='flex mt-4'>
-            <div>
-              <img src={qrcode} alt="" />
-            </div>
-            <div className='ml-2'>
+            <div className='flex mt-4'>
               <div>
-                <img src={playstore} alt="" />
+                <img src={qrcode} alt="" />
               </div>
-              <div className='mt-3'>
-                <img src={apple} alt="" />
+              <div className='ml-2'>
+                <div>
+                  <img src={playstore} alt="" />
+                </div>
+                <div className='mt-3'>
+                  <img src={apple} alt="" />
+                </div>
               </div>
             </div>
-           </div>
             <div className='flex items-center gap-x-6 mt-6'>
               <FaFacebookF size={24} />
               <LuTwitter size={24} />
@@ -74,7 +74,7 @@ const Footer = () => {
           </div>
         </div>
       </Container>
-      <CopyRight/>
+      <CopyRight />
     </div>
   )
 }

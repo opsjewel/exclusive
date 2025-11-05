@@ -1,21 +1,16 @@
 import React, { useEffect, useState } from 'react'
 
-const ProductLeftPart = () => {
-  
+const ProductLeftPart = ({ selectedCategory, setSelectedCategory }) => {
+  const [productData, setProductData] = useState([])
 
-    const [productData, setProductData] = useState([])
+  useEffect(() => {
+    fetch("https://dummyjson.com/products")
+      .then(res => res.json())
+      .then(data => setProductData(data.products))
+  }, [])
 
-    useEffect(() => {
-      fetch("https://dummyjson.com/products")
-        .then((res) => res.json())
-        .then((data) => setProductData(data.products))
-    }, [])
-
-    const categoriesProduct = productData.map((product)=>(
-      product.category
-    ))
-
-    const uniqueCategory = [...new Set(categoriesProduct)]
+  const categoriesProduct = productData.map(product => product.category)
+  const uniqueCategory = ["all", ...new Set(categoriesProduct)] // Add "all" option
 
   return (
     <div className='w-[25%] mt-[32px]'>
@@ -23,12 +18,19 @@ const ProductLeftPart = () => {
         <h3 className='font-primary font-bold text-[20px]'>Shop by Category</h3>
       </div>
       <div>
-              {
-        uniqueCategory.map((product)=>(
-          <div className='mb-4 font-primary'>{product}</div>
-        ))
-      }
+        {uniqueCategory.map(category => (
+          <div
+            key={category}
+            className={`mb-4 font-primary cursor-pointer ${
+              selectedCategory === category ? "font-bold text-primary" : ""
+            }`}
+            onClick={() => setSelectedCategory(category)}
+          >
+            {category.charAt(0).toUpperCase() + category.slice(1)}
+          </div>
+        ))}
       </div>
+      {/* Colors (optional) */}
       <div>
         <h3 className='font-primary font-bold text-[20px] mt-10'>Shop by Color</h3>
         <div className='flex items-center mt-[15px]'>

@@ -10,6 +10,9 @@ import About from "../../Pages/About";
 import Registration from "../Registration/Registration";
 import LogIn from "../Registration/LogIn";
 import Contact from "../../Pages/Contact";
+import NotFound from "../../Pages/NotFound";
+import WishList from "../../Pages/WishList";
+import CheckOut from "../../Pages/CheckOut";
 
 
 const router = createBrowserRouter([
@@ -25,6 +28,9 @@ const router = createBrowserRouter([
       { path: "/signup", Component: Registration },
       { path: "/login", Component: LogIn },
       { path: "/contact", Component: Contact },
+      { path: "/wishlist", Component: WishList },
+      { path: "/checkout", Component: CheckOut },
+      { path: "*", Component: NotFound },
     ],
   },
 ]);

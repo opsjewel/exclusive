@@ -119,15 +119,15 @@ const Registration = () => {
         <p className='font-secondary mt-6'>Enter your details below</p>
         <div className='mt-[48px]'>
           <div>
-            <input onChange={handleName} className='w-[370px] py-2 border-b-2 border-black focus:outline-0' type="text" placeholder='Name' />
+            <input onChange={handleName} className='w-[370px] text-black/50 py-2 border-b-2 border-black focus:outline-0' type="text" placeholder='Name' />
             <p>{nameErr}</p>
           </div>
           <div className='mt-[40px]'>
-            <input onChange={handleEmail} className='w-[370px] py-2 border-b-2 border-black focus:outline-0' type="email" placeholder='Email or Phone Number' />
+            <input onChange={handleEmail} className='w-[370px] text-black/50 py-2 border-b-2 border-black focus:outline-0' type="email" placeholder='Email or Phone Number' />
             <p>{emailErr}</p>
           </div>
           <div className='relative mt-[40px]'>
-            <input onChange={handlePassword} className='w-[370px] py-2 border-b-2 border-black focus:outline-0' type={show ? "text" : "password"}
+            <input onChange={handlePassword} className='w-[370px] text-black/50 py-2 border-b-2 border-black focus:outline-0' type={show ? "text" : "password"}
             
             placeholder='Password' />
             <div className='absolute top-3 right-2'>
